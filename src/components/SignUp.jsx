@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import {firebaseApp} from '../firebase';
+import { Link } from 'react-router';
+
  class SignUp extends Component{
 
    constructor(props){
@@ -24,25 +26,28 @@ import {firebaseApp} from '../firebase';
   }
    render(){
      return(
-       <div className="form-inline">
+       <div className="form-inline" style={{margin: '5%'}}>
        <h2>Sign up</h2>
        <div className="form-group">
        <input className="form-control"
        type="text"
        placeholder="email"
-       onChange={event=>this.setState({email:event.target.value})}/><br/>
+       onChange={event=>this.setState({email:event.target.value})}
+       style={{margin:'2%'}}/><br/>
        <input className="form-control"
        type="password"
        placeholder="password"
        onChange={event=> this.setState({password:event.target.value})}
+       style={{margin:'2%'}}
         /><br/>
 
-       <button className="btn btn-primary" onClick={()=> this.signUp()}>
+       <button className="btn btn-primary" onClick={()=> this.signUp()} style={{margin:'2%'}}>
        Sign Up
        </button>
        </div>
 
         <div>{this.state.error.message}</div>
+    <div><Link to={'/signin'}>Already a user then sign in instead</Link> </div>
         </div>
      );
    }
